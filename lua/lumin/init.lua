@@ -10,7 +10,11 @@ local function set_highlights(highlights)
     end
 end
 
-function M.load()
+function M.load(variant)
+    if variant ~= nil then
+        require("lumin.config").setup({ variant = variant })
+    end
+
     vim.cmd("highlight clear")
 
     if vim.fn.exists("syntax_on") then
