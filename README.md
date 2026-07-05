@@ -2,8 +2,6 @@
 
 A Neovim colorscheme ported from [frypan-5/Lumin](https://github.com/frypan-5/Lumin).
 
-Lumin keeps the editor surface quiet and low-contrast, with a warm accent color and restrained syntax colors.
-
 ---
 ## Variants
 
