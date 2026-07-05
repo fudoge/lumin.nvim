@@ -4,6 +4,7 @@ A Neovim colorscheme ported from [frypan-5/Lumin](https://github.com/frypan-5/Lu
 
 Lumin keeps the editor surface quiet and low-contrast, with a warm accent color and restrained syntax colors.
 
+---
 ## Variants
 
 Lumin ships with three variants:
@@ -14,13 +15,41 @@ Lumin ships with three variants:
 | Light | `lumin-light` |
 | Blur | `lumin-blur` |
 
+---
 ## Installation
+
+### Neovim 0.12+ `vim.pack`
+
+```lua
+vim.pack.add({
+  { src = "https://github.com/fudoge/lumin.nvim", name = "lumin" },
+})
+
+vim.cmd.colorscheme("lumin")
+```
+
+### Native packages
+
+Using Neovim's package directory directly:
+
+```sh
+git clone https://github.com/fudoge/lumin.nvim.git \
+  ~/.local/share/nvim/site/pack/colors/start/lumin.nvim
+```
+
+Then load the colorscheme:
+
+```lua
+vim.cmd.colorscheme("lumin")
+```
+
+### Lazy.nvim
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
-  "fudoge/lumin-nvim",
+  "fudoge/lumin.nvim",
   lazy = false,
   priority = 1000,
   config = function()
@@ -135,7 +164,7 @@ Lumin includes highlight groups for:
 ## Credits
 
 - Original theme: [frypan-5/Lumin](https://github.com/frypan-5/Lumin)
-- Neovim port: [fudoge/lumin-nvim](https://github.com/fudoge/lumin-nvim)
+- Neovim port: [fudoge/lumin.nvim](https://github.com/fudoge/lumin.nvim)
 
 ## License
 
