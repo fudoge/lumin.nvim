@@ -94,14 +94,6 @@ function M.get()
         TabLineFill = { bg = c.bg },
         TabLineSel = { fg = c.fg, bg = c.element },
 
-        -- Common plugin UI
-        lualine_a_normal = { fg = c.blend_bg, bg = c.accent, bold = true },
-        lualine_b_normal = { fg = c.fg, bg = c.element_hover },
-        lualine_c_normal = { fg = c.fg_muted, bg = c.element },
-        lualine_a_inactive = { fg = c.fg_subtle, bg = c.surface },
-        lualine_b_inactive = { fg = c.fg_subtle, bg = c.surface },
-        lualine_c_inactive = { fg = c.fg_subtle, bg = c.surface },
-
         NavicText = { fg = c.fg_muted, bg = c.surface },
         NavicSeparator = { fg = c.fg_subtle, bg = c.surface },
         NavicIconsFile = { fg = c.fg_muted, bg = c.surface },
