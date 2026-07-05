@@ -14,7 +14,29 @@ function M.setup(opts)
 end
 
 function M.set_variant(variant)
-    M.options.variant = variant
+    if variant ~= nil then
+        M.options.variant = variant
+    end
+end
+
+function M.get_variant(variant)
+    variant = variant or M.options.variant or M.defaults.variant
+
+    if variant ~= "regular" and variant ~= "light" and variant ~= "blur" then
+        return M.defaults.variant
+    end
+
+    return variant
+end
+
+function M.get_colors_name(variant)
+    variant = M.get_variant(variant)
+
+    if variant == "regular" then
+        return "lumin"
+    end
+
+    return "lumin-" .. variant
 end
 
 return M

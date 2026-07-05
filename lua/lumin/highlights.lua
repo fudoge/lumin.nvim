@@ -4,7 +4,7 @@ local palette = require("lumin.palette")
 local M = {}
 
 function M.get()
-    local variant = config.options.variant or "blur"
+    local variant = config.get_variant()
     local c = palette[variant]
 
     return {

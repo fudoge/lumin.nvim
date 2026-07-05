@@ -65,7 +65,9 @@ vim.cmd.colorscheme("lumin-blur")
 
 ## Configuration
 
-You can configure the default variant before loading the colorscheme:
+`setup()` only stores options. `colorscheme` applies the theme.
+
+Use `variant` when you want `colorscheme lumin` to load a specific palette:
 
 ```lua
 require("lumin").setup({
@@ -75,11 +77,23 @@ require("lumin").setup({
 vim.cmd.colorscheme("lumin")
 ```
 
-The dedicated colorscheme files set the variant automatically:
+Or use the dedicated colorscheme files, which set the variant for you:
 
 ```lua
 vim.cmd.colorscheme("lumin-light") -- uses variant = "light"
 vim.cmd.colorscheme("lumin-blur")  -- uses variant = "blur"
+```
+
+Blur can be configured with the background color Neovim should expose and the terminal color Lumin should blend transparent UI colors against:
+
+```lua
+require("lumin").setup({
+  variant = "blur",
+  blur_bg = "NONE",
+  blur_blend_bg = "#101010",
+})
+
+vim.cmd.colorscheme("lumin")
 ```
 
 ## Lualine

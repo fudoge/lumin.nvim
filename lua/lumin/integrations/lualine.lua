@@ -14,7 +14,7 @@ local function get_colors(colors_override, colors)
 end
 
 local function get_variant(variant)
-    return variant or config.options.variant or "regular"
+    return config.get_variant(variant)
 end
 
 local function is_scoped_override(colors_override, variant)

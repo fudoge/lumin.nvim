@@ -13,18 +13,10 @@ end
 function M.load(variant)
     local config = require("lumin.config")
 
-    if variant ~= nil then
-        config.set_variant(variant)
-    end
-
-    vim.cmd("highlight clear")
-
-    if vim.fn.exists("syntax_on") then
-        vim.cmd("syntax reset")
-    end
+    config.set_variant(variant)
 
     vim.o.termguicolors = true
-    vim.g.colors_name = config.options.variant == "regular" and "lumin" or "lumin-" .. config.options.variant
+    vim.g.colors_name = config.get_colors_name()
 
     set_highlights(require("lumin.highlights").get())
 end
