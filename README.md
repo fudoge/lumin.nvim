@@ -1,6 +1,6 @@
 # lumin.nvim
 
-A Neovim colorscheme ported from [frypan-5/Lumin](https://github.com/frypan-5/Lumin).
+A Neovim colorscheme ported from [frypan05/Lumin](https://github.com/frypan05/Lumin).
 
 ---
 ## Variants
@@ -161,7 +161,7 @@ Lumin includes highlight groups for:
 
 ## Credits
 
-- Original theme: [frypan-5/Lumin](https://github.com/frypan-5/Lumin)
+- Original theme: [frypan05/Lumin](https://github.com/frypan05/Lumin)
 - Neovim port: [fudoge/lumin.nvim](https://github.com/fudoge/lumin.nvim)
 
 ## License
