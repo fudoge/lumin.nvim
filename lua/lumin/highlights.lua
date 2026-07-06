@@ -3,8 +3,8 @@ local palette = require("lumin.palette")
 
 local M = {}
 
-function M.get()
-    local variant = config.get_variant()
+function M.get(variant)
+    variant = config.get_variant(variant)
     local c = palette[variant]
 
     return {

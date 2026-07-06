@@ -12,13 +12,14 @@ end
 
 function M.load(variant)
     local config = require("lumin.config")
+    local active_variant = config.resolve_load_variant(variant)
 
-    config.set_variant(variant)
+    config.set_active_variant(active_variant)
 
     vim.o.termguicolors = true
-    vim.g.colors_name = config.get_colors_name()
+    vim.g.colors_name = config.get_colors_name(active_variant)
 
-    set_highlights(require("lumin.highlights").get())
+    set_highlights(require("lumin.highlights").get(active_variant))
 end
 
 return M

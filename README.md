@@ -13,6 +13,27 @@ Lumin ships with three variants:
 | Light | `lumin-light` |
 | Blur | `lumin-blur` |
 
+<details>
+<summary>Regular</summary>
+
+![lumin regular screenshot](images/lumin.png)
+
+</details>
+
+<details>
+<summary>Light</summary>
+
+![lumin light screenshot](images/lumin-light.png)
+
+</details>
+
+<details>
+<summary>Blur</summary>
+
+![lumin blur screenshot](images/lumin-blur.png)
+
+</details>
+
 ---
 ## Installation
 
@@ -94,6 +115,44 @@ require("lumin").setup({
 })
 
 vim.cmd.colorscheme("lumin")
+```
+
+For a stronger blur experience, pair `lumin-blur` with a terminal theme that keeps
+the same Lumin palette while letting the terminal compositor handle opacity and
+blur. For Ghostty:
+
+```ini
+background = #101010
+foreground = #D6D6DD
+
+cursor-color = #FFC799
+cursor-text = #101010
+
+selection-background = #343434
+selection-foreground = #FFFFFF
+
+palette = 0=#101010
+palette = 1=#FF8080
+palette = 2=#99FFE4
+palette = 3=#FFC799
+palette = 4=#87C3FF
+palette = 5=#E394DC
+palette = 6=#81D2CE
+palette = 7=#D6D6DD
+palette = 8=#505050
+palette = 9=#FF9A9A
+palette = 10=#B7FFEE
+palette = 11=#FFD7AD
+palette = 12=#A8D4FF
+palette = 13=#F0A8E8
+palette = 14=#A4EAE1
+palette = 15=#FFFFFF
+```
+
+```ini
+theme = lumin
+background-opacity = 0.72
+background-blur = 50
 ```
 
 ## Lualine
