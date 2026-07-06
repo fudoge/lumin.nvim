@@ -160,6 +160,74 @@ require("lumin").setup({
 })
 ```
 
+### Bufferline
+
+```lua
+require("bufferline").setup({
+  highlights = require("lumin.integrations.bufferline")(),
+})
+```
+
+You can also select a variant and pass direct overrides:
+
+```lua
+require("bufferline").setup({
+  highlights = require("lumin.integrations.bufferline")("light", {
+    fill = {
+      bg = "NONE",
+    },
+  }),
+})
+```
+
+Or define global and variant-specific overrides through Lumin:
+
+```lua
+require("lumin").setup({
+  variant = "light",
+  integrations = {
+    bufferline = {
+      all = {
+        fill = {
+          bg = "NONE",
+        },
+      },
+      light = {
+        buffer_selected = {
+          italic = true,
+        },
+      },
+    },
+  },
+})
+```
+
+### barbar.nvim
+
+barbar.nvim may set its own highlights after the colorscheme loads. Apply Lumin after
+`barbar.setup()` when using barbar:
+
+```lua
+require("barbar").setup()
+require("lumin.integrations.barbar").apply()
+```
+
+You can also define global and variant-specific overrides through Lumin:
+
+```lua
+require("lumin").setup({
+  integrations = {
+    barbar = {
+      all = {
+        BufferCurrent = {
+          italic = true,
+        },
+      },
+    },
+  },
+})
+```
+
 ## Supported highlights
 
 Lumin includes highlight groups for:
@@ -168,6 +236,7 @@ Lumin includes highlight groups for:
 - Treesitter captures
 - Diagnostics and diff groups
 - Bufferline
+- barbar.nvim
 - NvimTree
 - Neo-tree
 - Navic breadcrumbs
