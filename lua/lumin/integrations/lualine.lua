@@ -20,8 +20,8 @@ function M.get(variant, colors_override)
     local default_colors = {
         normal = mode(c.accent),
         insert = mode(c.green),
-        terminal = mode(c.green),
-        command = mode(c.yellow),
+        terminal = mode(c.preproc),
+        command = mode(c.string),
         visual = mode(c.attribute),
         replace = mode(c.red),
 
