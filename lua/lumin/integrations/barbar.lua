@@ -1,33 +1,10 @@
-local config = require("lumin.config")
-local palette = require("lumin.palette")
+local common = require("lumin.integrations.common")
 
 local M = {}
 
-local function get_colors(colors_override, colors)
-    if colors_override == nil then
-        return {}
-    elseif type(colors_override) == "function" then
-        return colors_override(colors)
-    else
-        return colors_override
-    end
-end
-
-local function get_variant(variant)
-    return config.get_variant(variant)
-end
-
-local function is_scoped_override(colors_override, variant)
-    return type(colors_override) == "table" and (colors_override.all ~= nil or colors_override[variant] ~= nil)
-end
-
 function M.get(variant, colors_override)
-    variant = get_variant(variant)
-
-    local c = palette[variant]
-    if c == nil then
-        c = palette.regular
-    end
+    local c
+    variant, c = common.resolve(variant)
 
     local default_colors = {
         BufferCurrent = { fg = c.fg, bg = c.bg, bold = true },
@@ -75,22 +52,7 @@ function M.get(variant, colors_override)
         BufferScrollArrow = { fg = c.fg_subtle, bg = c.bg },
     }
 
-    local integrations = config.options.integrations or {}
-    local barbar = colors_override or integrations.barbar
-    if is_scoped_override(barbar, variant) then
-        return vim.tbl_deep_extend(
-            "force",
-            default_colors,
-            get_colors(barbar.all, c),
-            get_colors(barbar[variant], c)
-        )
-    end
-
-    if barbar then
-        return vim.tbl_deep_extend("force", default_colors, get_colors(barbar, c))
-    end
-
-    return default_colors
+    return common.extend("barbar", default_colors, c, variant, colors_override)
 end
 
 function M.apply(variant, colors_override)

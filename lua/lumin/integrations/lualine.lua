@@ -1,33 +1,10 @@
-local config = require("lumin.config")
-local palette = require("lumin.palette")
+local common = require("lumin.integrations.common")
 
 local M = {}
 
-local function get_colors(colors_override, colors)
-    if colors_override == nil then
-        return {}
-    elseif type(colors_override) == "function" then
-        return colors_override(colors)
-    else
-        return colors_override
-    end
-end
-
-local function get_variant(variant)
-    return config.get_variant(variant)
-end
-
-local function is_scoped_override(colors_override, variant)
-    return type(colors_override) == "table" and (colors_override.all ~= nil or colors_override[variant] ~= nil)
-end
-
 function M.get(variant, colors_override)
-    variant = get_variant(variant)
-
-    local c = palette[variant]
-    if c == nil then
-        c = palette.regular
-    end
+    local c
+    variant, c = common.resolve(variant)
 
     local bar_bg = c.surface == "NONE" and "NONE" or c.element
     local inactive_bg = c.surface == "NONE" and "NONE" or c.surface
@@ -55,22 +32,7 @@ function M.get(variant, colors_override)
         },
     }
 
-    local integrations = config.options.integrations or {}
-    local lualine = colors_override or integrations.lualine
-    if is_scoped_override(lualine, variant) then
-        return vim.tbl_deep_extend(
-            "force",
-            default_colors,
-            get_colors(lualine.all, c),
-            get_colors(lualine[variant], c)
-        )
-    end
-
-    if lualine then
-        return vim.tbl_deep_extend("force", default_colors, get_colors(lualine, c))
-    end
-
-    return default_colors
+    return common.extend("lualine", default_colors, c, variant, colors_override)
 end
 
 return setmetatable(M, {
